@@ -15,7 +15,7 @@ function App() {
       
       <div className='flex flex-col h-full gap-4 p-4'>
         <div className='bg-stone-800 border border-stone-600 rounded-3xl w-full flex-1 flex justify-center items-center p-10 overflow-hidden'>
-          Hello World ! (Modèle actif : {activeModel})
+          Faire div messages
         </div>
         <div className='flex self-center items-center rounded-full text-white bg-stone-800 border border-stone-600 p-2 gap-4 w-1/2 relative'>
           <input 
