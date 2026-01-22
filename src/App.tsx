@@ -54,6 +54,9 @@ function App() {
           <button className='bg-[#ffffff10] hover:bg-blue-600 hover:border-blue-500 text-white rounded-full flex items-center justify-center border border-[#ffffff20] w-12 h-12 cursor-pointer transition-all'>
             ➤
           </button>
+          <button className='bg-[#ffffff10] hover:bg-blue-600 hover:border-blue-500 text-white rounded-full flex items-center justify-center border border-[#ffffff20] w-12 h-12 cursor-pointer transition-all'>
+            Hello World !
+          </button>
         </div>
       </div>
     </div>
