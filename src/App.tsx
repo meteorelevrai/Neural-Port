@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Models } from './models'
 import Popup from './components/Popup'
 import Msg from './components/Msg';
@@ -9,10 +9,15 @@ function App() {
   const [inputValue, setInputValue] = useState("");
   const OLLAMA_URL = "http://localhost:11434";
   const [message, setMessage] = useState<any[]>([])
+  const downMsg = useRef<HTMLDivElement>(null);
 
   const handleMenu = () => {
     setIsOpen(!isOpen);
   }
+
+  useEffect(() => {
+    downMsg.current?.scrollIntoView();
+  }, [message])
 
   function textareaSize(event: React.ChangeEvent<HTMLTextAreaElement>) {
     setInputValue(event.target.value)
@@ -65,6 +70,7 @@ function App() {
             {message.map((message, index) => (
               <Msg key={index} msg={message.content} />
             ))}
+            <div ref={downMsg}></div>
           </div>
         </div>
         <div className='flex self-center items-center rounded-3xl text-white bg-stone-800 border border-stone-600 p-2 gap-4 w-2/5 relative'>
