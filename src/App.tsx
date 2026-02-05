@@ -3,12 +3,17 @@ import { Models } from './models'
 import Popup from './components/Popup'
 import Msg from './components/Msg';
 
+export interface Message {
+  role: "user" | "IA";
+  content: string;
+}
+
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeModel, setModel] = useState(Models[0]);
   const [inputValue, setInputValue] = useState("");
   const OLLAMA_URL = "http://localhost:11434";
-  const [message, setMessage] = useState<any[]>([])
+  const [message, setMessage] = useState<Message[]>([])
   const downMsg = useRef<HTMLDivElement>(null);
 
   const handleMenu = () => {
@@ -37,7 +42,7 @@ function App() {
   async function sendMessage() {
     try {
       if (inputValue === "") return;
-      const user_msg = {role: "user", content: inputValue}
+      const user_msg: Message = {role: "user", content: inputValue}
       setInputValue("")
       setMessage(prev => [...prev, user_msg])
 
@@ -52,7 +57,7 @@ function App() {
       });
       const data = await response.json();
       const text = data.message.content
-      const ollama_msg = {role: "IA", content: text};
+      const ollama_msg: Message = {role: "IA", content: text};
       setMessage(prev => [...prev, ollama_msg])
     } catch (error) {
       console.log(error);
