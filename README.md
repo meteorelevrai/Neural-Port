@@ -61,20 +61,13 @@ L'application sera accessible sur `http://localhost:5173`.
 
 La configuration des modèles actifs se fait via le fichier `src/models.ts`. L'architecture permet d'ajouter de nouveaux points de terminaison sans refonte du code :
 
-`typescript
+```typescript
 export const Models = [
     "gemma3:1b",
     "mistral:7b",
     // Ajoutez vos modèles personnalisés ici
 ]
-`
-
-## 📐 Philosophie d'Ingénierie
-
-Ce projet a été construit en appliquant des principes de programmation bas niveau au développement frontend. Une attention particulière a été portée à :
-* La gestion stricte de la mémoire et des re-rendus.
-* L'intégrité des types (Zero `any` policy).
-* La gestion asynchrone robuste des flux de données.
+```
 
 ## ⚖️ Licence
 
