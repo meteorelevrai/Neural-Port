@@ -4,8 +4,6 @@
 
 Conçue pour garantir une confidentialité totale des données (Local-First) et une latence nulle, cette application exploite l'écosystème **React** avec une architecture **TypeScript** stricte pour assurer robustesse et maintenabilité.
 
-![Interface Preview](./screenshot.png)
-
 ## ⚡ Fonctionnalités Clés
 
 * **Architecture Local-First :** Aucune donnée ne quitte votre machine. Interaction directe avec l'API Ollama locale.
