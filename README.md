@@ -14,8 +14,8 @@ Conçue pour garantir une confidentialité totale des données (Local-First) et 
 
 ## 🛠 Stack Technique
 
-* **Core :** React 18 (Vite)
-* **Type System :** TypeScript (Mode Strict)
+* **Core :** React 19 (Vite 7)
+* **Type System :** TypeScript
 * **Styling :** Tailwind CSS + Typography Plugin
 * **State Management :** Hooks natifs optimisés (`useRef` pour la gestion DOM, `useState` pour la réactivité).
 
@@ -23,7 +23,7 @@ Conçue pour garantir une confidentialité totale des données (Local-First) et 
 
 ### Pré-requis
 
-* **Node.js** (v18+)
+* **Node.js** (v20+ recommandé)
 * **Ollama** (Service actif en arrière-plan)
 
 ### Initialisation des modèles
@@ -41,7 +41,7 @@ ollama pull gpt-oss:20b
 
 1.  Cloner le dépôt :
     ```bash
-    git clone https://github.com/VOTRE_PSEUDO/neural-port.git
+    git clone https://github.com/meteorelevrai/Neural-Port.git
     cd neural-port
     ```
 
