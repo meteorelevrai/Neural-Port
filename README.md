@@ -1,73 +1,85 @@
-# React + TypeScript + Vite
+# Neural-Port 🧠
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Neural-Port** est une interface web moderne et légère permettant d'interagir avec des modèles de langage (LLMs) locaux via **Ollama**.
 
-Currently, two official plugins are available:
+Construit avec **React**, **TypeScript** et **Tailwind CSS**, ce projet offre une UI propre et réactive pour discuter avec une IA tournant entièrement sur votre machine, garantissant confidentialité totale et latence minimale.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Capture d'écran du projet](./screenshot.png)
+*(Note : Ajoutez une capture d'écran de l'application nommée 'screenshot.png' à la racine du projet)*
 
-## React Compiler
+## ✨ Fonctionnalités
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Intégration Locale :** Connexion directe à une instance Ollama locale (pas de cloud).
+- **Changement de Modèle :** Basculez instantanément entre les modèles disponibles (Mistral, Gemma, Qwen, etc.).
+- **Support Markdown :** Les réponses sont parfaitement formatées (blocs de code, listes, gras) grâce à `react-markdown`.
+- **Mémoire Contextuelle :** L'IA garde en mémoire l'historique de la conversation active.
+- **Interface Réactive :** Design "Dark Mode" fluide avec Tailwind, incluant le scroll automatique et une zone de texte auto-extensible.
 
-## Expanding the ESLint configuration
+## 🛠 Stack Technique
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend :** React (Vite)
+- **Langage :** TypeScript (Typage strict)
+- **Style :** Tailwind CSS + @tailwindcss/typography
+- **Backend IA :** Ollama (API Locale)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Guide de Démarrage
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 1. Pré-requis
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Vous devez avoir **Node.js** et **Ollama** installés sur votre machine.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1.  **Installer Ollama :** Téléchargez-le sur le site officiel d'Ollama.
+2.  **Télécharger les modèles :** Ouvrez votre terminal et lancez les commandes suivantes pour récupérer les modèles supportés par l'application :
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+`bash
+ollama pull gemma3:1b
+ollama pull mistral:7b
+ollama pull qwen3:4b
+ollama pull gpt-oss:20b
+`
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3. **Lancer le serveur Ollama :**
+   Assurez-vous qu'Ollama tourne en arrière-plan (il écoute généralement sur le port `11434`).
+
+### 2. Installation
+
+Clonez le dépôt et installez les dépendances :
+
+`bash
+git clone https://github.com/VOTRE_PSEUDO/neural-port.git
+cd neural-port
+npm install
+`
+
+### 3. Lancement
+
+Démarrez le serveur de développement :
+
+`bash
+npm run dev
+`
+
+Ouvrez ensuite votre navigateur à l'adresse `http://localhost:5173`.
+
+## ⚙️ Configuration
+
+Les modèles disponibles sont définis dans le fichier `src/models.ts`. Vous pouvez ajouter ou retirer des modèles en modifiant la liste :
+
+`typescript
+export const Models = [
+    "gemma3:1b",
+    "mistral:7b",
+    "qwen3:4b",
+    "gpt-oss:20b"
+]
+`
+
+## 👨‍💻 Note de l'Auteur
+
+Ce projet a été réalisé dans une démarche d'apprentissage approfondi de **React** et de l'écosystème Frontend moderne.
+
+Venant d'un background en **programmation C / Bas niveau**, l'objectif était de comprendre les mécanismes de gestion d'état (`useState`), le cycle de vie des composants (`useEffect`) et les références mémoires (`useRef`) avec la même rigueur que la gestion mémoire en C.
+
+## 📄 Licence
+
+MIT
