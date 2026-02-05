@@ -1,35 +1,36 @@
-# Neural-Port 🧠
+# Neural-Port
 
-**Neural-Port** est une interface web moderne et légère permettant d'interagir avec des modèles de langage (LLMs) locaux via **Ollama**.
+**Neural-Port** est une interface client haute performance pour les modèles de langage locaux (LLMs). Elle agit comme une couche de visualisation réactive au-dessus de l'API **Ollama**.
 
-Construit avec **React**, **TypeScript** et **Tailwind CSS**, ce projet offre une UI propre et réactive pour discuter avec une IA tournant entièrement sur votre machine, garantissant confidentialité totale et latence minimale.
+Conçue pour garantir une confidentialité totale des données (Local-First) et une latence nulle, cette application exploite l'écosystème **React** avec une architecture **TypeScript** stricte pour assurer robustesse et maintenabilité.
 
-![Capture d'écran du projet](./screenshot.png)
-*(Note : Ajoutez une capture d'écran de l'application nommée 'screenshot.png' à la racine du projet)*
+![Interface Preview](./screenshot.png)
 
-## ✨ Fonctionnalités
+## ⚡ Fonctionnalités Clés
 
-- **Intégration Locale :** Connexion directe à une instance Ollama locale (pas de cloud).
-- **Changement de Modèle :** Basculez instantanément entre les modèles disponibles (Mistral, Gemma, Qwen, etc.).
-- **Support Markdown :** Les réponses sont parfaitement formatées (blocs de code, listes, gras) grâce à `react-markdown`.
-- **Mémoire Contextuelle :** L'IA garde en mémoire l'historique de la conversation active.
-- **Interface Réactive :** Design "Dark Mode" fluide avec Tailwind, incluant le scroll automatique et une zone de texte auto-extensible.
+* **Architecture Local-First :** Aucune donnée ne quitte votre machine. Interaction directe avec l'API Ollama locale.
+* **Support Multi-Modèles :** Commutation à chaud (Hot-swapping) entre différents modèles (Mistral, Gemma, Qwen, etc.).
+* **Rendu Riche :** Moteur de rendu Markdown intégré avec support de la coloration syntaxique pour le code.
+* **Gestion de Contexte :** Persistance de l'historique conversationnel pour des interactions cohérentes.
+* **Interface Adaptative :** UI/UX minimaliste en mode sombre, optimisée pour la lecture et le développement.
 
 ## 🛠 Stack Technique
 
-- **Frontend :** React (Vite)
-- **Langage :** TypeScript (Typage strict)
-- **Style :** Tailwind CSS + @tailwindcss/typography
-- **Backend IA :** Ollama (API Locale)
+* **Core :** React 18 (Vite)
+* **Type System :** TypeScript (Mode Strict)
+* **Styling :** Tailwind CSS + Typography Plugin
+* **State Management :** Hooks natifs optimisés (`useRef` pour la gestion DOM, `useState` pour la réactivité).
 
-## 🚀 Guide de Démarrage
+## 🚀 Installation & Démarrage
 
-### 1. Pré-requis
+### Pré-requis
 
-Vous devez avoir **Node.js** et **Ollama** installés sur votre machine.
+* **Node.js** (v18+)
+* **Ollama** (Service actif en arrière-plan)
 
-1.  **Installer Ollama :** Téléchargez-le sur le site officiel d'Ollama.
-2.  **Télécharger les modèles :** Ouvrez votre terminal et lancez les commandes suivantes pour récupérer les modèles supportés par l'application :
+### Initialisation des modèles
+
+Assurez-vous que les modèles suivants sont disponibles localement :
 
 `bash
 ollama pull gemma3:1b
@@ -38,48 +39,50 @@ ollama pull qwen3:4b
 ollama pull gpt-oss:20b
 `
 
-3. **Lancer le serveur Ollama :**
-   Assurez-vous qu'Ollama tourne en arrière-plan (il écoute généralement sur le port `11434`).
+### Déploiement Local
 
-### 2. Installation
+1.  Cloner le dépôt :
+    `bash
+    git clone https://github.com/VOTRE_PSEUDO/neural-port.git
+    cd neural-port
+    `
 
-Clonez le dépôt et installez les dépendances :
+2.  Installer les dépendances :
+    `bash
+    npm install
+    `
 
-`bash
-git clone https://github.com/VOTRE_PSEUDO/neural-port.git
-cd neural-port
-npm install
-`
+3.  Lancer le serveur de développement :
+    `bash
+    npm run dev
+    `
 
-### 3. Lancement
-
-Démarrez le serveur de développement :
-
-`bash
-npm run dev
-`
-
-Ouvrez ensuite votre navigateur à l'adresse `http://localhost:5173`.
+L'application sera accessible sur `http://localhost:5173`.
 
 ## ⚙️ Configuration
 
-Les modèles disponibles sont définis dans le fichier `src/models.ts`. Vous pouvez ajouter ou retirer des modèles en modifiant la liste :
+La configuration des modèles actifs se fait via le fichier `src/models.ts`. L'architecture permet d'ajouter de nouveaux points de terminaison sans refonte du code :
 
 `typescript
 export const Models = [
     "gemma3:1b",
     "mistral:7b",
-    "qwen3:4b",
-    "gpt-oss:20b"
+    // Ajoutez vos modèles personnalisés ici
 ]
 `
 
-## 👨‍💻 Note de l'Auteur
+## 📐 Philosophie d'Ingénierie
 
-Ce projet a été réalisé dans une démarche d'apprentissage approfondi de **React** et de l'écosystème Frontend moderne.
+Ce projet a été construit en appliquant des principes de programmation bas niveau au développement frontend. Une attention particulière a été portée à :
+* La gestion stricte de la mémoire et des re-rendus.
+* L'intégrité des types (Zero `any` policy).
+* La gestion asynchrone robuste des flux de données.
 
-Venant d'un background en **programmation C / Bas niveau**, l'objectif était de comprendre les mécanismes de gestion d'état (`useState`), le cycle de vie des composants (`useEffect`) et les références mémoires (`useRef`) avec la même rigueur que la gestion mémoire en C.
+## ⚖️ Licence
 
-## 📄 Licence
+**Copyright © 2026 Neural-Port. Tous droits réservés.**
 
-MIT
+Ce logiciel est propriétaire.
+
+* **Autorisé :** Téléchargement, installation et exécution à des fins strictement personnelles et privées.
+* **Interdit :** Toute modification, redistribution, sous-licence, usage commercial ou vente du code source ou binaire, sans autorisation écrite explicite de l'auteur.
