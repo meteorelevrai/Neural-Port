@@ -40,18 +40,18 @@ ollama pull gpt-oss:20b
 ### Déploiement Local
 
 1.  Cloner le dépôt :
-    `bash
+    ```bash
     git clone https://github.com/VOTRE_PSEUDO/neural-port.git
     cd neural-port
-    `
+    ```
 
 2.  Installer les dépendances :
-    `bash
+    `
     npm install
     `
 
 3.  Lancer le serveur de développement :
-    `bash
+    `
     npm run dev
     `
 
@@ -64,7 +64,9 @@ La configuration des modèles actifs se fait via le fichier `src/models.ts`. L'a
 ```typescript
 export const Models = [
     "gemma3:1b",
+    "qwen3:4b",
     "mistral:7b",
+    "gpt-oss:20b",
     // Ajoutez vos modèles personnalisés ici
 ]
 ```
