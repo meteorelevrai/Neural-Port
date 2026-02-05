@@ -30,12 +30,12 @@ Conçue pour garantir une confidentialité totale des données (Local-First) et 
 
 Assurez-vous que les modèles suivants sont disponibles localement :
 
-`bash
+```bash
 ollama pull gemma3:1b
 ollama pull mistral:7b
 ollama pull qwen3:4b
 ollama pull gpt-oss:20b
-`
+```
 
 ### Déploiement Local
 
