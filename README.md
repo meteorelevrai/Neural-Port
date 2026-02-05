@@ -2,14 +2,13 @@
 
 **Neural-Port** est une interface client haute performance pour les modèles de langage locaux (LLMs). Elle agit comme une couche de visualisation réactive au-dessus de l'API **Ollama**.
 
-Conçue pour garantir une confidentialité totale des données (Local-First) et une latence nulle, cette application exploite l'écosystème **React** avec une architecture **TypeScript** stricte pour assurer robustesse et maintenabilité.
+Conçue pour garantir une confidentialité totale des données (Local-First), cette application exploite l'écosystème **React** avec une architecture **TypeScript** stricte pour assurer robustesse et maintenabilité.
 
 ## ⚡ Fonctionnalités Clés
 
 * **Architecture Local-First :** Aucune donnée ne quitte votre machine. Interaction directe avec l'API Ollama locale.
 * **Support Multi-Modèles :** Commutation à chaud (Hot-swapping) entre différents modèles (Mistral, Gemma, Qwen, etc.).
 * **Rendu Riche :** Moteur de rendu Markdown intégré avec support de la coloration syntaxique pour le code.
-* **Gestion de Contexte :** Persistance de l'historique conversationnel pour des interactions cohérentes.
 * **Interface Adaptative :** UI/UX minimaliste en mode sombre, optimisée pour la lecture et le développement.
 
 ## 🛠 Stack Technique
