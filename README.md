@@ -4,12 +4,6 @@
 
 Conçue pour garantir une confidentialité totale des données (Local-First), cette application exploite l'écosystème **React** avec une architecture **TypeScript** stricte pour assurer robustesse et maintenabilité.
 
-## 🛠 Stack Technique
-
-* **Core :** React 19 (Vite 7)
-* **Type System :** TypeScript
-* **Styling :** Tailwind CSS + Typography Plugin
-
 ## 🚀 Installation & Démarrage
 
 ### Pré-requis
