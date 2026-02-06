@@ -13,13 +13,19 @@ Conçue pour garantir une confidentialité totale des données (Local-First), ce
 
 ### Initialisation des modèles
 
-Assurez-vous que les modèles suivants sont disponibles localement :
+Assurez-vous d'avoir installé des modèles avec la commande suivante :
+
+```bash
+ollama pull <nom_du_modèle>
+```
+
+- Exemples de modèles testés:
 
 ```bash
 ollama pull gemma3:1b
+ollama pull llama3.2:3b
 ollama pull qwen3:4b
 ollama pull mistral:7b
-ollama pull gpt-oss:20b
 ```
 
 ### Déploiement Local
@@ -31,34 +37,20 @@ ollama pull gpt-oss:20b
     ```
 
 2.  Installer les dépendances :
-    `
+    ```bash
     npm install
-    `
+    ```
 
 3.  Lancer le serveur de développement :
-    `
+    ```bash
     npm run dev
-    `
+    ```
 
 L'application sera accessible sur `http://localhost:5173`.
 
-## ⚙️ Configuration
-
-La configuration des modèles actifs se fait via le fichier `src/models.ts`. L'architecture permet d'ajouter de nouveaux points de terminaison sans refonte du code :
-
-```typescript
-export const Models = [
-    "gemma3:1b",
-    "qwen3:4b",
-    "mistral:7b",
-    "gpt-oss:20b",
-    // Ajoutez vos modèles personnalisés ici
-]
-```
-
 ## ⚖️ Licence
 
-**Copyright © 2026 Neural-Port. Tous droits réservés.**
+**Copyright © 2026 MeteoreLeVrai. Tous droits réservés.**
 
 Ce logiciel est propriétaire.
 
