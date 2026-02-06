@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { Models } from './models'
 import Popup from './components/Popup'
 import Msg from './components/Msg';
 
@@ -8,13 +7,21 @@ export interface Message {
   content: string;
 }
 
+export interface OllamaModelResponse {
+  models: {
+    name: string;
+    model: string;
+  } [];
+}
+
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeModel, setModel] = useState(Models[0]);
+  const [activeModel, setModel] = useState<string>();
   const [inputValue, setInputValue] = useState("");
   const OLLAMA_URL = "http://localhost:11434";
   const [message, setMessage] = useState<Message[]>([])
   const downMsg = useRef<HTMLDivElement>(null);
+  const [modelList, setModelList] = useState<string[]>([])
 
   const handleMenu = () => {
     setIsOpen(!isOpen);
@@ -23,6 +30,22 @@ function App() {
   useEffect(() => {
     downMsg.current?.scrollIntoView();
   }, [message])
+
+  useEffect(() => {
+    async function fetchmodels() {
+      try{
+        const response_model = await fetch(`${OLLAMA_URL}/api/tags`);
+        const data_models = (await response_model.json()) as OllamaModelResponse;
+        const models_names = data_models.models.map(models => models.name);
+        setModelList(models_names);
+      }
+      catch (e)
+      {
+        console.log(`Error ${e}`);
+      }
+    }
+    fetchmodels();
+  }, []);
 
   function textareaSize(event: React.ChangeEvent<HTMLTextAreaElement>) {
     setInputValue(event.target.value)
@@ -81,26 +104,28 @@ function App() {
         <div className='flex self-center items-center rounded-3xl text-white bg-stone-800 border border-stone-600 p-2 gap-4 w-2/5 relative'>
           <textarea  
             className='overflow-y-auto flex-1 bg-transparent outline-none text-lg placeholder-stone-500 resize-none max-h-[10lh] p-5'
-            placeholder={`Demander à ${activeModel}...`}
+            placeholder={activeModel ? `Demander à ${activeModel}...` : `Sélectionnez un modèle`}
             onChange={textareaSize}
             onKeyDown={handleKeyDown}
             rows={1}
             value={inputValue}
+            disabled={!activeModel}
           />
           <div className='w-px h-[90%] bg-stone-600'></div>
           <button 
             className='bg-[#ffffff10] hover:bg-[#ffffff20] text-white rounded-full cursor-pointer px-6 py-2 text-base border border-[#ffffff20] transition-colors whitespace-nowrap' 
             onClick={handleMenu}
           >
-            {activeModel} ⯆
+            {activeModel ? activeModel : "Modèles"} ⯆
           </button>
           {isOpen && (
             <Popup 
               closeMenu={() => setIsOpen(false)}
-              changeModel={(modelName) => setModel(modelName)}
+              changeModel={(model) => setModel(model)}
+              availableModels={modelList}
             />
           )}
-          <button onClick={sendMessage} className='bg-[#ffffff10] hover:bg-blue-600 hover:border-blue-500 text-white rounded-full flex items-center justify-center border border-[#ffffff20] w-12 h-12 cursor-pointer transition-all'>
+          <button onClick={sendMessage} disabled={!activeModel} className={`bg-[#ffffff10] ${activeModel ? `hover:bg-blue-600 hover:border-blue-500` : ``} text-white rounded-full flex items-center justify-center border border-[#ffffff20] w-12 h-12 ${activeModel ? `cursor-pointer` : `cursor-not-allowed`} transition-all`}>
             ➤
           </button>
         </div>

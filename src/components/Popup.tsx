@@ -1,11 +1,10 @@
-import { Models } from '../models';
-
 interface PopupProps {
     closeMenu: () => void;
     changeModel: (modelName: string) => void;
+    availableModels: string[];
 }
 
-function Popup({ closeMenu, changeModel }: PopupProps) {
+function Popup({ closeMenu, changeModel, availableModels }: PopupProps) {
     return (
         <div className="fixed inset-0 z-[9999] flex justify-center items-center bg-black/40 backdrop-blur-sm" onClick={closeMenu}>
             <div className='fixed inset-0 m-auto z-[9999] w-1/2 h-fit bg-[#ffffff40] backdrop-blur-md border border-[#ffffff80] rounded-xl p-8 flex flex-col gap-6 shadow-2xl'>
@@ -13,7 +12,7 @@ function Popup({ closeMenu, changeModel }: PopupProps) {
                     Sélectionnez un modèle
                 </h1>
                 <div className='grid grid-cols-2 gap-4'>
-                    {Models.map((modelName) => (
+                    {availableModels.map((modelName) => (
                         <div 
                             key={modelName} 
                             onClick={() => {
