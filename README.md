@@ -50,7 +50,7 @@ L'application sera accessible sur `http://localhost:5173`.
 
 ## ⚖️ Licence
 
-**Copyright © 2026 MeteoreLeVrai. Tous droits réservés.**
+**Copyright © 2026 meteorelevrai. Tous droits réservés.**
 
 Ce logiciel est propriétaire.
 
