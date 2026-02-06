@@ -4,19 +4,11 @@
 
 Conçue pour garantir une confidentialité totale des données (Local-First), cette application exploite l'écosystème **React** avec une architecture **TypeScript** stricte pour assurer robustesse et maintenabilité.
 
-## ⚡ Fonctionnalités Clés
-
-* **Architecture Local-First :** Aucune donnée ne quitte votre machine. Interaction directe avec l'API Ollama locale.
-* **Support Multi-Modèles :** Commutation à chaud (Hot-swapping) entre différents modèles (Mistral, Gemma, Qwen, etc.).
-* **Rendu Riche :** Moteur de rendu Markdown intégré avec support de la coloration syntaxique pour le code.
-* **Interface Adaptative :** UI/UX minimaliste en mode sombre, optimisée pour la lecture et le développement.
-
 ## 🛠 Stack Technique
 
 * **Core :** React 19 (Vite 7)
 * **Type System :** TypeScript
 * **Styling :** Tailwind CSS + Typography Plugin
-* **State Management :** Hooks natifs optimisés (`useRef` pour la gestion DOM, `useState` pour la réactivité).
 
 ## 🚀 Installation & Démarrage
 
