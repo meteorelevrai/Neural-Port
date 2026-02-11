@@ -66,15 +66,23 @@ function App() {
     try {
       if (inputValue === "") return;
       const user_msg: Message = {role: "user", content: inputValue}
+
+      const history = [...message, user_msg];
+
+      const history_msg = history.map(msg => ({
+        role: msg.role === "IA" ? "assistant" : msg.role,
+        content: msg.content
+      }));
+
       setInputValue("")
-      setMessage(prev => [...prev, user_msg])
+      setMessage(history)
 
       const response = await fetch(`${OLLAMA_URL}/api/chat`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({
           model: activeModel,
-          messages: [{role: "user", content: inputValue}],
+          messages: history_msg,
           stream: false
         })
       });
